@@ -2,6 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+class Header extends React.Component {
+  render () {
+    return (
+      <div>
+        <h1>Gaijins Always Lose</h1>
+      </div>
+    );
+  }
+}
 
 // class Square extends React.Component {
 //     // constructor(props) {
@@ -133,7 +142,7 @@ class Game extends React.Component {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
-
+   
     const moves = history.map((step, move) => {
       const desc = move ?
           'Go to move #' + move :
@@ -146,7 +155,6 @@ class Game extends React.Component {
         );
     });
 
-
     let status;
     if (winner) {
       status = 'Winner: ' + winner;
@@ -157,12 +165,14 @@ class Game extends React.Component {
 
     return (
       <div className="game">
-        <div className="game-board">
-          <Board 
-            squares={current.squares}
-            onClick={(i) => this.handleClick(i)}
-          />
-
+        <div>
+          <Header/>
+            <div className="game-board">
+              <Board 
+                squares={current.squares}
+                onClick={(i) => this.handleClick(i)}
+              />
+            </div>
         </div>
         <div className="game-info">
           <div>{status}</div>
